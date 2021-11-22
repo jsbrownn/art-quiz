@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0",
+  "description": "My new js application",
+  "private": true,
+  "name": "art-quiz",
+  "scripts": {
+    "start": "rss-scripts start",
+    "build": "rss-scripts build"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1", 
+    "dart-sass": "^1.25.0",
+    "html-loader": "^3.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.4",
+    "rss-scripts": "^0.2.4",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1"
+  },
+  "dependencies": {
+    "normalize": "^0.3.1"
+  }
+}
