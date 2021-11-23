@@ -3,20 +3,26 @@
 
 
 function setBackgroundsToCategories(data) {
-  const arr = Object.keys( data )
-  arr.forEach(elem => {
-    // let num = data.elem.lenght
-    // console.log
-  })
-  debugger
 
+  const arr = Object.keys(data)
   const categoriesCards = document.querySelectorAll('.categories-list__item')
-  const src = "url('./images/image-data-master/img/1.webp')"
-  categoriesCards.forEach(elem => {
-    elem.style.backgroundImage = src
-    elem.addEventListener('click', startGame)
-  })
 
+  arr.forEach(elem => {
+    const imageNumArr = data[elem].map(item => item.imageNum);
+    const random = getRandomInt(imageNumArr.length)
+    let num = imageNumArr[random]
+    let src = `url('./images/image-data-master/img/${num}.webp')`;
+
+    categoriesCards.forEach(card => {
+      let category = card.className.split('--')[1]
+      console.log(card)
+      if (category === elem) {
+        card.style.backgroundImage = src
+        card.addEventListener('click', startGame)
+      }
+
+    })
+  })
 }
 
 
@@ -61,25 +67,40 @@ const data = loadData()
 
 function fiteredDataCategories(data) {
   let filteredData = new Object;
-  const categoriesArr = ['surrealism', 'romanticism', 'religion', 'expressionism', 'impressionism', 'landscape', 'marine', 'painting', 'portrait', 'realism', 'renaissance', 'avant-garde']; 
+  const categoriesArr = ['surrealism', 'romanticism', 'religion', 'expressionism', 'impressionism', 'landscape', 'marine', 'painting', 'portrait', 'realism', 'renaissance', 'avant-garde'];
   // создавал этот массив динамически, но для этого нужно было пробежатся по всему обьекту. Решил что для 12-ти категорий предпочтительнее сделать это руками, так будет быстрее работать приложение. Но с точки зрения расширяемости, лучше использовать первый способ.
 
   for (let i in data) {
     filteredData[categoriesArr[i]] = data.filter(elem => elem.category === categoriesArr[i])
   }
-  setLocalStorage("data", JSON.stringify( filteredData ) )
+  setLocalStorage("data", JSON.stringify(filteredData))
 }
+
+
 
 
 const categoriesData = JSON.parse(localStorage.getItem('data'))
 
 setBackgroundsToCategories(categoriesData)
+
 const clsoseBtn = document.querySelector('.settings')
 
 
 
 console.log(
-   "Уважаемый проверяющий! Очень прошу проверить работу еще раз перед дедлайном кросс-чека, не успел реализовать даже базовые вещи. Спасибо!"
+  "Уважаемый проверяющий! Очень прошу проверить работу еще раз перед дедлайном кросс-чека, не успел реализовать даже базовые вещи. Спасибо!"
 )
 
 console.log('discord: Сергей Борейко(jsbrownn)#5257')
+
+
+
+
+// const rangeVolume = document.querySelector('.range-slider')
+// rangeVolume.addEventListener('change',valueChanged)
+// function valueChanged(e){
+// 	let a = e.target.value;
+    
+//   console.log(a)
+//   e.target.style.background = `linear-gradient(to right,#4BD663,#4BD663 ${a * 100}%,#eee ${a * 100}%)`;
+  
