@@ -1,12 +1,12 @@
-import routes from './js/routes.js'
-import { Settings } from './js/components/settings/settings'
+// import routes from './js/routes.js'
+// import { Settings } from './js/components/settings/settings'
 
 
 function setBackgroundsToCategories(data) {
   const arr = Object.keys( data )
   arr.forEach(elem => {
-    let num = data.elem.lenght
-    console.log
+    // let num = data.elem.lenght
+    // console.log
   })
   debugger
 
