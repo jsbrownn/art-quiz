@@ -1,6 +1,7 @@
 // import routes from './js/routes.js'
 // import { Settings } from './js/components/settings/settings'
-
+import { Categories} from './js/components/category/category'
+import { Game } from './js/game'
 
 function setBackgroundsToCategories(data) {
 
@@ -92,6 +93,11 @@ console.log(
 )
 
 console.log('discord: Сергей Борейко(jsbrownn)#5257')
+// const settings = document.querySelector('.settings-logo')
+// settings.addEventListener('click',showCattegories)
+
+
+
 
 
 
@@ -104,3 +110,8 @@ console.log('discord: Сергей Борейко(jsbrownn)#5257')
 //   console.log(a)
 //   e.target.style.background = `linear-gradient(to right,#4BD663,#4BD663 ${a * 100}%,#eee ${a * 100}%)`;
   
+
+
+console.log( Game )
+const game = new Game;
+console.log (game.start())
