@@ -1,8 +1,8 @@
 import { Component } from "../component";
 
-const StartPage = new Component (
-    'startPage',
-    `<div class="home-block">
+const StartPage = new Component(
+  'startPage',`
+  <div class="home-block">
     <h3 class="home__title title">Пожалуйста, выберете квиз:</h3>
     <ul class="home-types__list">
       <li class="home-types-list__item home-types-list__item--artist">
@@ -26,6 +26,6 @@ const StartPage = new Component (
         </div>
       </li>
     </ul>
-    </div>`
+  </div>`
 )
-export default  StartPage ;
+export { StartPage };

@@ -1,4 +1,5 @@
-import { Component } from '../component'
+import { Component } from "../component";
+
 const Settings = new Component ('settings', `
 <div class="settings-block">
   <div class="settings_header">

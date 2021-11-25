@@ -1,7 +1,13 @@
-// import routes from './js/routes.js'
-import { Settings } from './js/components/settings/settings'
+import { StartPage } from './components/start-page/startPage'
+import { Settings } from './components/settings/settings.js'
+import { Categories } from './components/categories/category.js'
 
-import { Game } from './js/game'
+// import { Routers }  from './js/routes.js'
+
+
+
+
+
 
 function setBackgroundsToCategories(data) {
 
@@ -16,22 +22,14 @@ function setBackgroundsToCategories(data) {
 
     categoriesCards.forEach(card => {
       let category = card.className.split('--')[1]
-      console.log(card)
       if (category === elem) {
         card.style.backgroundImage = src
-        card.addEventListener('click', startGame)
+
       }
 
     })
   })
 }
-
-
-function startGame() {
-  const category = (this.className.split('categories-list__item--'))[1]
-  console.log(category)
-}
-
 
 
 function getRandomInt(max) {
@@ -76,63 +74,111 @@ function fiteredDataCategories(data) {
   }
   setLocalStorage("data", JSON.stringify(filteredData))
 }
-function checkRender(target) {
 
-}
 
 
 
 const categoriesData = JSON.parse(localStorage.getItem('data'))
 
-setBackgroundsToCategories(categoriesData)
 
-const settingBtn = document.querySelector('.settings')
-let isRender = false;
-settingBtn.addEventListener('click', () => {
-  if (isRender) {
-    isRender = false;
-    Settings.unrender();
 
-    
-  } else {
-    isRender = true;
-    Settings.render()
-    const closeBtn = document.querySelector('.close-menu')
-    closeBtn.onclick = ()=>{
-      console.log('click')
-      isRender = false;
-      Settings.unrender();
-    }
+// const settingBtn = document.querySelector('.settings')
+
+// let isRender = false;
+
+// settingBtn.addEventListener('click', () => {
+//   onNavigate('/settings')
+
+//   if (isRender) {
+//     isRender = false;
+//     // Settings.unrender();
+//     history.back()
+
+//   } else {
+//     isRender = true;
+//     Settings.render()
+//     const closeBtn = document.querySelector('.close-menu')
+//     closeBtn.onclick = () => {
+//       isRender = false;
+//       //  Settings.unrender();
+//       history.back()
+//     }
+//   }
+
+//   return false;
+// }
+// )
+
+
+
+
+const routes = {
+  '/': StartPage,
+  '/settings': Settings,
+  '/categories': Categories
+}
+
+const root = document.querySelector('#root')
+root.innerHTML = routes['/'].render()
+
+function onNavigate(pathname) {
+  window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname
+  )
+    root.innerHTML = routes[pathname].render()
+
+}
+
+window.onpopstate = () => {
+
+  root.innerHTML = routes[window.location.pathname].render()
+  console.log(routes[window.location.pathname])
+
+}
+
+
+
+
+
+
+
+
+function startGame(event) {
+
+  const typeGame = event.target.closest('li').className.split('--')[1]
+  const game = new Game(typeGame)
+  console.log(game)
+  onNavigate('/categories')
+  Categories.render()
+  setBackgroundsToCategories(categoriesData)
+
+}
+
+
+
+
+document.body.addEventListener('click', navigate)
+
+function navigate(event) {
+  console.log(event.target)
+
+  // logo
+  if (event.target.className === "logo-img") {
+    onNavigate('/')
+  }
+
+  if (event.target.className === 'settings-logo icon') {
+    onNavigate('/settings')
+
+  }
+  
+  if (event.target.className === "home-types-list__item") {
+    onNavigate('/categories')
+  }
+  
+  if (event.target.className === "close-menu") {
+    history.back()
   }
 }
-)
-
-
-
-console.log(
-  "Уважаемый проверяющий! Очень прошу проверить работу еще раз перед дедлайном кросс-чека, не успел реализовать даже базовые вещи. Спасибо!"
-)
-
-console.log('discord: Сергей Борейко(jsbrownn)#5257')
-// const settings = document.querySelector('.settings-logo')
-// settings.addEventListener('click',showCattegories)
-
-
-
-
-
-
-
-// const rangeVolume = document.querySelector('.range-slider')
-// rangeVolume.addEventListener('change',valueChanged)
-// function valueChanged(e){
-// 	let a = e.target.value;
-
-//   console.log(a)
-//   e.target.style.background = `linear-gradient(to right,#4BD663,#4BD663 ${a * 100}%,#eee ${a * 100}%)`;
-
-
-
-console.log(Game)
-const game = new Game;
-console.log(game.start())
