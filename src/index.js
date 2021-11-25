@@ -1,6 +1,6 @@
 // import routes from './js/routes.js'
-// import { Settings } from './js/components/settings/settings'
-import { Categories} from './js/components/category/category'
+import { Settings } from './js/components/settings/settings'
+
 import { Game } from './js/game'
 
 function setBackgroundsToCategories(data) {
@@ -76,7 +76,9 @@ function fiteredDataCategories(data) {
   }
   setLocalStorage("data", JSON.stringify(filteredData))
 }
+function checkRender(target) {
 
+}
 
 
 
@@ -84,7 +86,26 @@ const categoriesData = JSON.parse(localStorage.getItem('data'))
 
 setBackgroundsToCategories(categoriesData)
 
-const clsoseBtn = document.querySelector('.settings')
+const settingBtn = document.querySelector('.settings')
+let isRender = false;
+settingBtn.addEventListener('click', () => {
+  if (isRender) {
+    isRender = false;
+    Settings.unrender();
+
+    
+  } else {
+    isRender = true;
+    Settings.render()
+    const closeBtn = document.querySelector('.close-menu')
+    closeBtn.onclick = ()=>{
+      console.log('click')
+      isRender = false;
+      Settings.unrender();
+    }
+  }
+}
+)
 
 
 
@@ -106,12 +127,12 @@ console.log('discord: Сергей Борейко(jsbrownn)#5257')
 // rangeVolume.addEventListener('change',valueChanged)
 // function valueChanged(e){
 // 	let a = e.target.value;
-    
+
 //   console.log(a)
 //   e.target.style.background = `linear-gradient(to right,#4BD663,#4BD663 ${a * 100}%,#eee ${a * 100}%)`;
-  
 
 
-console.log( Game )
+
+console.log(Game)
 const game = new Game;
-console.log (game.start())
+console.log(game.start())

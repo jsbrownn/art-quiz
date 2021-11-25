@@ -1,5 +1,6 @@
 import { Component } from '../component'
-const Settings = new Component ('settings', `<div class="settings-block">
+const Settings = new Component ('settings', `
+<div class="settings-block">
   <div class="settings_header">
     <h2 class="settings-title">Настройки</h2>
     <div class="close-menu"></div>
@@ -45,8 +46,9 @@ const Settings = new Component ('settings', `<div class="settings-block">
       </div>
     </div>
   </div>
-</div>`)
+</div>
+`)
 
 
-export default Settings;
+export  { Settings };
 

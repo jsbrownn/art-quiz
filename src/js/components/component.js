@@ -7,11 +7,19 @@ class Component {
   
   render(){
     let root = document.getElementById('root')
-    return root.innerHTML = this.markup;
+      root.innerHTML = this.markup;
+      root.style.transition = 'all ease .4s'
+      root.style.opacity = '1'
   }
   unrender() {
     let root = document.getElementById('root')
-    return root.innerHTML = "";
+    
+    root.style.opacity = '0';
+    setTimeout(()=>{
+      root.innerHTML = ""
+    },400)
+    
+    
   }
 
 }
