@@ -85,8 +85,7 @@ ul {
   height: 100%;
   object-fit: cover;
 }
-.settings-logo:hover {
-}
+
 
 /* Home */
 .home-block {
@@ -119,11 +118,6 @@ ul {
   
 }
 
-
-
-.home-types-list__item :hover {
-
-}
 
 .type-item__title {
   font-size: 2rem;

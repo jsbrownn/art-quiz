@@ -9,7 +9,7 @@ const StartPage = new Component(
         <h5 class="type-item__title">Art-quiz по художникам</h5>
         <div class="type-item-logo__wrap type-item-logo__wrap--monolisa">
           <img
-            src="./images/categories/dali-removebg-preview.png"
+            src="./assets/images/categories/dali-removebg-preview.png"
             alt="logo"
             class="type__logo type__logo--dali"
           />
@@ -19,7 +19,7 @@ const StartPage = new Component(
         <h5 class="type-item__title">Art-quiz по картинам</h5>
         <div class="type-item-logo__wrap">
           <img
-            src="./images/categories/monalisa.png"
+            src="./assets/images/categories/monalisa.png"
             alt="logo"
             class="type__logo type__logo--monalisa"
           />
