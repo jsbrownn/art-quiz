@@ -1,4 +1,3 @@
-import { helper } from './helpers/app-helper.js';
 import { router } from './router/router.js';
 import { settingController } from './controllers/settings-controller/settings-controller.js';
 import { categoriesController } from './controllers/categories-controller/categories.js';
@@ -41,38 +40,12 @@ observer.observe(root, configMutation);
 
 
 
-async function loadData() {
-  const url = './assets/images/image-data-master/data.json';
-  const res = await fetch(url);
-  const data = await res.json();
-  return data;
-}
-
-
-function fiteredDataCategories(data) {
-  const filteredData = {};
-  const categoriesArr = ['surrealism', 'romanticism', 'religion', 'expressionism', 'impressionism', 'landscape', 'marine', 'painting', 'portrait', 'realism', 'renaissance', 'avant-garde'];
-
-  for (let i in data) {
-    filteredData[categoriesArr[i]] = data.filter((elem) => elem.category === categoriesArr[i]);
-    helper.setLocalStorage('data', JSON.stringify(filteredData));
-  };
-  const categoriesData = JSON.parse(localStorage.getItem('data'));
-}
-
-
-
-
 
 
 window.onpopstate = () => {
   root.innerHTML = router.routes[window.location.pathname].markup;
 };
 
-const data = loadData()
-  .then((data) => {
-    fiteredDataCategories(data);
-  });
 
 
 
