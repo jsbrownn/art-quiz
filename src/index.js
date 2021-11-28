@@ -1,31 +1,45 @@
-import { StartPage } from './components/start-page/startPage';
-import { Settings } from './components/settings/settings';
-import { Categories } from './components/categories/category';
-// import { Question } from './components/question/question.'
-import { Game } from './controllers/game-contoller/game';
-import { helper } from './helpers/app-helper';
+import { helper } from './helpers/app-helper.js';
+import { router } from './router/router.js';
+import { settingController } from './controllers/settings-controller/settings-controller.js';
+import { categoriesController } from './controllers/categories-controller/categories.js';
+import { startPageController } from './controllers/startPage-controller/startPage.js';
 
-// import { Routers }  from './js/routes.js'
+const root = document.querySelector('#root');
+root.innerHTML = router.routes['/'].render();
 
-function setBackgroundsToCategories(data) {
-  const arr = Object.keys(data);
-  const categoriesCards = document.querySelectorAll('.categories-list__item');
+const configMutation = {
+  childList: true,
+  subtree: true
+};
 
-  arr.forEach((elem) => {
-    const imageNumArr = data[elem].map((item) => item.imageNum);
-    const random = helper.getRandomInt(imageNumArr.length);
-    const num = imageNumArr[random];
-    const src = `url('./assets/images/image-data-master/img/${num}.webp')`;
+const callback = function (mutationsList, observer) {
+  const elem = mutationsList[0].addedNodes[1].className
 
-    categoriesCards.forEach((item) => {
-      const card = item;
-      const category = card.className.split('--')[1];
-      if (category === elem) {
-        card.style.backgroundImage = src;
-      }
-    });
-  });
+  if (elem === 'home-block') {
+    startPageController();
+  }
+
+  if (elem === 'settings-block') {
+    settingController();
+  }
+
+  if (elem === 'categories__block') {
+    categoriesController()
+  }
+
+  console.log(elem)
+
+
+
 }
+
+const observer = new MutationObserver(callback);
+observer.observe(root, configMutation);
+
+
+
+
+
 
 async function loadData() {
   const url = './assets/images/image-data-master/data.json';
@@ -33,81 +47,53 @@ async function loadData() {
   const data = await res.json();
   return data;
 }
-const data = loadData()
-  .then((data) => {
-    fiteredDataCategories(data);
-  });
+
 
 function fiteredDataCategories(data) {
   const filteredData = {};
   const categoriesArr = ['surrealism', 'romanticism', 'religion', 'expressionism', 'impressionism', 'landscape', 'marine', 'painting', 'portrait', 'realism', 'renaissance', 'avant-garde'];
 
-  Object.keys(data).forEach((i) => {
-    if ({}.hasOwnProperty.call(data, i)) {
-      filteredData[categoriesArr[i]] = data.filter((elem) => elem.category === categoriesArr[i]);
-    }
+  for (let i in data) {
+    filteredData[categoriesArr[i]] = data.filter((elem) => elem.category === categoriesArr[i]);
     helper.setLocalStorage('data', JSON.stringify(filteredData));
-  });
+  };
   const categoriesData = JSON.parse(localStorage.getItem('data'));
 }
 
-const routes = {
-  '/': StartPage,
-  '/settings': Settings,
-  '/categories': Categories,
-};
 
-const root = document.querySelector('#root');
-root.innerHTML = routes['/'].render();
 
-function onNavigate(pathname) {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
-  root.innerHTML = routes[pathname].render();
-}
+
+
 
 window.onpopstate = () => {
-  root.innerHTML = routes[window.location.pathname].render();
+  root.innerHTML = router.routes[window.location.pathname].markup;
 };
 
+const data = loadData()
+  .then((data) => {
+    fiteredDataCategories(data);
+  });
+
+
+
+
+document.querySelector('.logo-img').addEventListener('click', () => {
+  router.onNavigate('/');
+});
+
+document.querySelector('.settings-logo').addEventListener('click', () => {
+  router.onNavigate('/settings');
+});
+
+
 function navigate(event) {
-  // logo
-  if (event.target.className === 'logo-img') {
-    onNavigate('/');
-  }
 
-  if (event.target.className === 'settings-logo icon') {
-    onNavigate('/settings');
-  }
+ 
 
-  if (event.target.closest('li')) {
-    // onNavigate('/categories')
-    const elems = event.path.splice(0, 4);
-    const artistLi = document.querySelector('.home-types-list__item--artist');
-    if (elems.includes(artistLi)) {
-      const game = new Game('artist');
-      onNavigate('/categories');
-      setBackgroundsToCategories(categoriesData);
-    }
-  }
 
-  if (event.target.closest('li')) {
-    // onNavigate('/categories')
-    const elems = event.path.splice(0, 4);
-    const picturesLi = document.querySelector('.home-types-list__item--pictures');
-    if (elems.includes(picturesLi)) {
-      const game = new Game('pictures');
-      onNavigate('/categories');
-      setBackgroundsToCategories(categoriesData);
-    }
-  }
 
-  if (event.target.className === 'close-menu') {
-    history.back();
-  }
+
+ 
 }
 
-document.body.addEventListener('click', navigate);
+// document.body.addEventListener('click', navigate);

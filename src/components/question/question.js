@@ -1,4 +1,4 @@
-const { Component } = require("../component");
+import { Component }  from './../component.js';
 
 const Question  =  new Component('question',`
     <div class="game-block">
@@ -22,4 +22,4 @@ const Question  =  new Component('question',`
     </div>
 `)
 
-export {Question};
+export { Question };

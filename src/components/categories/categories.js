@@ -1,4 +1,4 @@
-const { Component } = require("../component");
+import { Component }  from './../component.js';
 
 const Categories = new Component('categories', `
   <div class= "categories__block" >

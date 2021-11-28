@@ -2,13 +2,15 @@ const webpack = require('webpack');
 const path = require('path')
 const { MiniCssExtractPlugin} = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { HtmlWebpackPlugin } = require ('html-webpack-plugin')
 import './src/style.css'
 
 
 
 module.exports = {
+  
   entry: {
-    main: path.resolve(__dirname, './src/index.js'),
+    main: path.resolve(__dirname, './src/app.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -40,26 +42,30 @@ module.exports = {
     },
 
   ],
-  mode: 'development',
-  devtool: 'inline-source-map',
-    devServer: {
-        
-        historyApiFallback: {
-          index: './index.html'
-        },
-        contentBase: path.resolve(__dirname, './dist'),
-        open: true,
-        compress: true,
-        hot: true,
-        port: 8082,
-    },
 
 
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'webpack Boilerplate',
+      template: path.resolve(__dirname, './src/template.html'), 
+      filename: 'index.html', 
+  })
+
   ],
+
+  devServer: {
+    historyApiFallback: {
+      index: './index.html'
+    },
+    contentBase: path.resolve(__dirname, './dist'),
+    open: true,
+    compress: true,
+    hot: true,
+    
+}
 
 
 

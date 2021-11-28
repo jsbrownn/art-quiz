@@ -1,10 +1,11 @@
 {
   "version": "0.1.0",
-  "description": "My new js application",
+  "description": "Test project",
   "private": true,
   "name": "art-quiz",
   "scripts": {
     "start": "rss-scripts start",
+    
     "build": "rss-scripts build"
   },
   "devDependencies": {
@@ -24,7 +25,8 @@
     "rss-scripts": "^0.2.4",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
     "normalize": "^0.3.1"
