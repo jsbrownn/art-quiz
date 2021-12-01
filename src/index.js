@@ -28,27 +28,15 @@ const callback = function (mutationsList, observer) {
 
   console.log(elem)
 
-
-
 }
 
 const observer = new MutationObserver(callback);
 observer.observe(root, configMutation);
 
 
-
-
-
-
-
-
 window.onpopstate = () => {
   root.innerHTML = router.routes[window.location.pathname].markup;
 };
-
-
-
-
 
 document.querySelector('.logo-img').addEventListener('click', () => {
   router.onNavigate('/');
@@ -57,16 +45,3 @@ document.querySelector('.logo-img').addEventListener('click', () => {
 document.querySelector('.settings-logo').addEventListener('click', () => {
   router.onNavigate('/settings');
 });
-
-
-function navigate(event) {
-
- 
-
-
-
-
- 
-}
-
-// document.body.addEventListener('click', navigate);

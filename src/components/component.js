@@ -17,7 +17,6 @@ class Component {
   }
 
   unrender() {
-
     let root = document.getElementById('root')
     root.style.opacity = '0';
     setTimeout(() => {

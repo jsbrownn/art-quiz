@@ -16,8 +16,6 @@ stop() {
   console.log(this,'stop')
 }
 
-
-
 showResult(){
   console.log(this,'showResult')
 }

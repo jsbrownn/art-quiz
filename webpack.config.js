@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path')
 const { MiniCssExtractPlugin} = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { HtmlWebpackPlugin } = require ('html-webpack-plugin')
 import './src/style.css'
 
@@ -45,7 +45,7 @@ module.exports = {
 
 
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
