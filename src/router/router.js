@@ -20,7 +20,6 @@ onNavigate(pathname) {
   }
   // this.routes[path].unrender()
   this.routes[path].isRender = false;
-  console.log( path)
 
   this.routes[pathname].isRender = true
 

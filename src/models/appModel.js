@@ -1,4 +1,9 @@
+import { helper } from "../helpers/app-helper.js";
+
+
+
 function getData() {
+
 
   const url = './assets/images/image-data-master/data.json';
   async function loadData(url) {
@@ -8,7 +13,7 @@ function getData() {
   }
 
 
-  const data = loadData( url )
+  const data = loadData(url)
     .then((data) => {
       fiteredDataCategories(data);
     });
@@ -37,6 +42,19 @@ function getData() {
     };
   }
 
+
+  const settingsDefault = {
+    "gameplay-timer" : true,
+    "interval" : "30",
+    "mute": false ,
+    "timer-sound" : true,
+    "volume" : "1",
+    "fanfars": true
+}
+
+if( !localStorage.getItem('settings') ){
+  helper.setLocalStorage('settings',JSON.stringify( settingsDefault ))
+}
 
 
 }

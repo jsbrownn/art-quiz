@@ -15,6 +15,11 @@ const helper = {
   ,
   getlocalStorage(key) {
     return localStorage.getItem(key);
+  },
+
+  playClick() {
+    new Audio("./../../src/assets/sounds/click.wav").play();
+
   }
 
 }

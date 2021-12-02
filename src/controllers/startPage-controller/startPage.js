@@ -1,9 +1,9 @@
 import { router } from "./../../router/router.js"
 import { Game } from "../game-contoller/game.js";
+import { helper } from "../../helpers/app-helper.js";
 
 function startPageController() {
   const items = document.querySelector('.home-types__list')
-  console.log(items)
   items.addEventListener('click',selectTypeGame)
 
   function changeTypeGame(event, element, type) {
@@ -18,7 +18,7 @@ function startPageController() {
 
 
   function selectTypeGame() {
-
+    helper.playClick()
     if (event.target.closest('li')) {
       const element = document.querySelector('.home-types-list__item--artist');
       const type = 'artist';

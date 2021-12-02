@@ -12,9 +12,6 @@ function categoriesController() {
   function setBackgroundsToCategories(data) {
     const categoriesCards = document.querySelectorAll('.categories-list__item')
 
-
-
-
     categoriesCards.forEach(elem => {
       let classes = elem.className.split('--')
       let category = classes[1]
@@ -28,7 +25,7 @@ function categoriesController() {
   }
   setBackgroundsToCategories(data)
 
-  //в данном случае не использую делегирование, меньше кода получится
+  //в данном случае не использую делегирование, меньше кода и проще получается
   const categoriesItems = document.querySelectorAll('.categories-list__item')
   categoriesItems.forEach(item => item.addEventListener('click', selectCategory))
 
@@ -37,20 +34,6 @@ function categoriesController() {
     const category = categoryClassNameArr[(categoryClassNameArr.length) - 1]
     router.onNavigate('/question')
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

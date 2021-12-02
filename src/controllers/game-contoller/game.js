@@ -15,6 +15,9 @@ pause() {
 stop() {
   console.log(this,'stop')
 }
+getQuestions () {
+  console.log(this,'getQuestions')
+}
 
 showResult(){
   console.log(this,'showResult')
