@@ -1,0 +1,5 @@
+function resultView () {
+
+}
+
+export { resultView };

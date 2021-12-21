@@ -2,6 +2,7 @@ import { StartPage } from "../components/start-page/start-page.compnent.js";
 import { Settings } from "../components/settings/settings.component.js";
 import { Categories } from "../components/categories/categories.component.js";
 import { Question } from "../components/questions/questions.component.js";
+import { Score } from "../components/score/score.component.js";
 
 
 const router = {
@@ -9,7 +10,8 @@ const router = {
     '/': StartPage,
     '/settings': Settings,
     '/categories': Categories,
-    '/questions': Question
+    '/questions': Question,
+    '/score': Score
   },
 
   onNavigate(pathname) {

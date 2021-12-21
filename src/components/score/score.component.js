@@ -1,4 +1,6 @@
+import { scoreController } from "../../controllers/score-controller/score.controller";
 import { Component } from "../component";
+
 
 const Score = new Component ('score',
 `
@@ -27,8 +29,6 @@ const Score = new Component ('score',
           </table>
         </div>
 `,
-
-
-)
+  scoreController)
 
 export {Score};

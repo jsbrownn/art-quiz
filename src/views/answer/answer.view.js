@@ -1,0 +1,7 @@
+function answerView (){
+
+
+
+}
+
+export { answerView};
