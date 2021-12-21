@@ -1,4 +1,4 @@
-import { settingController } from "../../controllers/settings-controller/settings-controller.js"
+import { settingController } from "../../controllers/settings-controller/settings.controller.js"
 import { helper } from "../../helpers/app-helper.js"
 
 

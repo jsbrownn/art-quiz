@@ -5,7 +5,6 @@
   "name": "art-quiz",
   "scripts": {
     "start": "rss-scripts start",
-    
     "build": "rss-scripts build"
   },
   "devDependencies": {
@@ -26,9 +25,12 @@
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1",
+    "webpack": "^5.65.0",
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
-    "normalize": "^0.3.1"
+    "normalize": "^0.3.1",
+    "webpack-cli": "^4.9.1",
+    "yarn": "^1.22.17"
   }
 }

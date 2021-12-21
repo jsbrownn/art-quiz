@@ -1,6 +1,6 @@
-import { Settings } from "../../components/settings/settings.js";
+
 import { helper } from "../../helpers/app-helper.js";
-import { settingsView } from "../../views/settings/settings.js";
+import { settingsView } from "../../views/settings/settings.view.js";
 
 function settingController() {
   settingsView();
@@ -39,40 +39,39 @@ function settingController() {
       addValue(event.target.id, event.target.checked)
     }
 
-      if (event.target.id === 'input-interval') {
-        addValue('interval', event.target.value)
+    if (event.target.id === 'input-interval') {
+      addValue('interval', event.target.value)
+    }
+
+    if (event.target.id === 'volume') {
+      const mute = settings.querySelector('#mute')
+      if (event.target.value === "0") {
+        addValue('mute', true)
+        mute.checked = true
+      } else {
+        addValue('mute', false)
+        mute.checked = false
+        addValue('volume', event.target.value)
+
       }
-
-      if (event.target.id === 'volume') {
-        const mute = settings.querySelector('#mute')
-        if (event.target.value === "0") {
-          addValue('mute', true)
-          mute.checked = true
-        } else {
-          addValue('mute', true);
-          mute.checked = false
-        }if (event.target.value !== "0") {
-          addValue('mute', false)
-          addValue('volume', event.target.value)
-        }
-      }
-      
-
-      
-
-
     }
 
 
-    initHandlers(inputs)
+
+
 
   }
 
 
+  initHandlers(inputs)
+
+}
 
 
 
 
 
 
-  export { settingController };
+
+
+export { settingController };

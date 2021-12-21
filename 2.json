@@ -1,0 +1,22 @@
+{
+  "name": "gem-pazzle",
+  "version": "1.0.0",
+  "description": "RSSchool app",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --open",
+    "eslint": "eslint ./src",
+    "test": "npm run eslint"
+  },
+  "author": "Sergei Boreiko",
+  "devDependencies": {
+    "copy-webpack-plugin": "6.3.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  }
+}

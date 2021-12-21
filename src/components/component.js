@@ -1,28 +1,27 @@
 
 class Component {
-  constructor(name, markup, handlerElem) {
+  constructor(name, markup, controller) {
     this.name = name,
     this.markup = markup,
-    this.handlerElem = handlerElem
+    this.controller = controller
+    
   }
 
   render() {
-
+    console.log('rendered')
     let root = document.getElementById('root')
+    root.style.opacity = '1'
     
-    setTimeout(() => {
-      root.style.opacity = '1'
-    }, 100)
     return root.innerHTML = this.markup;
   }
 
   unrender() {
     let root = document.getElementById('root')
     root.style.opacity = '0';
-    setTimeout(() => {
-      return root.innerHTML = ""
-    }, 0)
+    return root.innerHTML =''
   }
+
+
 
 }
 

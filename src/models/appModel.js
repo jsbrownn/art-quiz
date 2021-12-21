@@ -44,10 +44,10 @@ function getData() {
 
 
   const settingsDefault = {
-    "gameplay-timer" : true,
+    "gameplay_timer" : true,
     "interval" : "30",
     "mute": false ,
-    "timer-sound" : true,
+    "timer_sound" : true,
     "volume" : "1",
     "fanfars": true
 }

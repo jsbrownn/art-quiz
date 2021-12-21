@@ -1,72 +1,45 @@
-const webpack = require('webpack');
-const path = require('path')
-const { MiniCssExtractPlugin} = require('mini-css-extract-plugin')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { HtmlWebpackPlugin } = require ('html-webpack-plugin')
-import './src/style.css'
-
+const path = require('path');
+const webpack = require('webpack')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
   
-  entry: {
-    main: path.resolve(__dirname, './src/app.js'),
-  },
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    publicPath: "/",
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'dist'),
+  },
+  module: {
+    rules : [
+
+      {test: /\.(?:mp3|wav)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|webp|gif)$/i,
+        type: 'asset/resource',
+    },
+    ],
+  },
+
+  mode: 'development',
+  devServer: {
+    port: 3001,
+    hot: false,
+    static: path.resolve(__dirname, './src'),
+    historyApiFallback: true
+  
   },
   
-  rules: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: ['babel-loader'],
-    },
-
-    {
-      test: /\.s[ac]ss$/i,
-      use: [
-        MiniCssExtractPlugin.loader,
-        // Creates `style` nodes from JS strings
-        "style-loader",
-        // Translates CSS into CommonJS
-        "css-loader",
-        // Compiles Sass to CSS
-        "sass-loader",
-      ],
-    },
-    {
-      test: /\.html$/i,
-      loader: "html-loader",
-    },
-
-  ],
-
-
+  devtool: 'inline-source-map',
   plugins: [
-    // new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'webpack Boilerplate',
-      template: path.resolve(__dirname, './src/template.html'), 
-      filename: 'index.html', 
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
   })
-
-  ],
-
-  devServer: {
-    historyApiFallback: {
-      index: './index.html'
-    },
-    contentBase: path.resolve(__dirname, './dist'),
-    open: true,
-    compress: true,
-    hot: true,
     
-}
-
-
-
-}
+  ]
+};

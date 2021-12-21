@@ -1,4 +1,6 @@
-import { Component }  from './../component.js';
+import { categoriesController } from '../../controllers/categories-controller/categories.contorller.js';
+import { Component }  from '../component.js';
+
 
 const Categories = new Component('categories', `
   <div class= "categories__block" >
@@ -40,7 +42,7 @@ const Categories = new Component('categories', `
       <h4 class="category-title">реализм</h4>
     </li>
   </ul>
-          </div > `)
+          </div > `, categoriesController)
 
 
 export { Categories };

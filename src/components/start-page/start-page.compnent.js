@@ -1,4 +1,5 @@
-import { Component } from "./../../components/component.js";
+import { startPageController } from "../../controllers/startPage-controller/start-page.controller.js";
+import { Component } from "../component.js";
 
 const StartPage = new Component(
   'startPage',`
@@ -26,6 +27,7 @@ const StartPage = new Component(
         </div>
       </li>
     </ul>
-  </div>`
+  </div>`,
+   startPageController
 )
 export { StartPage };
