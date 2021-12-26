@@ -1,19 +1,11 @@
 import { router } from './router/router.js';
 import { getData } from './models/appModel.js'
-import { startPageController } from './controllers/startPage-controller/start-page.controller.js';
-import { categoriesController } from './controllers/categories-controller/categories.contorller.js';
-import { settingController } from './controllers/settings-controller/settings.controller.js';
-import { questionsController } from './controllers/questions-contorller/questions-controller.js';
 
 
 
+const root = document.querySelector('#root');
+router.onNavigate('/')
 
-
-// const root = document.querySelector('#root');
-// router.onNavigate('/')
-
-// root.innerHTML = router.routes['/'].render()
-// startPageController()
 
 
 

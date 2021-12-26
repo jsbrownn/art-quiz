@@ -1,4 +1,4 @@
-import { scoreView } from "../../views/score/score.view";
+import { scoreView } from "../../views/score/score.view.js";
 
 function scoreController() {
   scoreView()

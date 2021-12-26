@@ -1,150 +1,67 @@
 import { Game } from "../../controllers/game-contoller/game.controller.js";
 import { helper } from "../../helpers/app-helper.js";
-import { questionHelper } from "../../helpers/question.helper.js";
 
 
-function questionsView() {
+
+ async function questionsView() {
   console.log('questionView is ready')
-  let visibleQuestionId = 'question_1'
-  let activeItemId  = 'slider-item_1'
-
-
-
-  let game = Game.instance
-  game.options = []
-  game.questions.forEach(elem => {
-    game.options.push(elem[game.typeGame])
-  });
+  const game = Game.instance
+  const questioinsContainer = document.querySelector('.questions-wrap')
+  const sliderList = document.querySelector('.game-slider__list')
+  const sliderItem = document.querySelector('.slider-item')
 
 
 
 
-  function createQuestions() {
-    const game = Game.instance
-    const questionWrap = document.querySelector('.questions-wrap')
-    let textQuestion = '';
-    if (game.typeGame === 'author') {
-      textQuestion = 'Кто автор этой картины?'
-    }
-
-    if (game.typeGame === 'name') {
-      textQuestion = 'Как называется эта картина?'
-    }
+  //get 
+  if (game.typeGame === 'artist') {
+    game.answerOptions = []
+    game.questions.forEach(elem => {
+      game.answerOptions.push(elem.author)
+    });
+  }
 
 
+  function setDataOnElems() {
 
-    function getWrongAnswer(num, rightAnswer) {
-      let nums = []
-      if (num < 0) {
-        num = game.questions.length
-      }
-
-      // в условии делаем проверку на уникальность чисел
-      //(сверяем с числами, которые уже выпадали)
-      if (game.options[num] !== rightAnswer && !nums.includes(num)) {
-        nums.push(num)
-        let option = game.options[num]
-        return option
-      } else {
-        getWrongAnswer(num - 1, rightAnswer)
-      }
-    }
+    
+    
+  for (let i = 0; i <= 10; i++){
+    
 
 
-
-    for (let i = 1; i <= 10; i++) {
-
-      const question = document.createElement('div')
-      question.style.display = 'none'
-      if (i === 1) {
-        question.style.display = ''
-      }
-
-      question.id = `question_${i}`
-      question.classList.add('question')
-      const title = document.createElement('h5')
-      title.classList.add('game-slider__title')
-      title.textContent = `Вопрос ${i} из 10`
-      const imgWrap = document.createElement('div')
-      imgWrap.classList.add('game-picture__wrap')
-      const image = document.createElement('img')
-      image.classList.add('game-picture')
-      image.id = `game-picture_${i}`
-      image.alt = 'picture'
-      const num = game.questions[i - 1].imageNum
-      const src = `../../assets/images/image-data-master/img/${num}.webp`
-      image.src = src
-      imgWrap.appendChild(image)
-
-      const textTitle = document.createElement('div')
-      textTitle.classList.add('game-question')
-      textTitle.textContent = textQuestion
-
-
-
-      const btnsWrap = document.createElement('div')
-      btnsWrap.classList.add('game-answers')
-      btnsWrap.id = `answers_${i}-btns`
-
-      let rightAnswer = game.questions[i - 1][game.typeGame]
-      for (let j = 1; j <= 4; j++) {
-
-        const button = document.createElement('button')
-        button.id = `game-btn_${j}`
-        button.classList.add('game-btn')
-        btnsWrap.appendChild(button)
-
-
-
-        if (j === 1) {
-          button.textContent = rightAnswer
-        } else {
-          let randomNum = helper.getRandomInt(game.options.length)
-          button.textContent = getWrongAnswer(randomNum, rightAnswer)
-        }
-
-
-
-      }
-      question.appendChild(title)
-      question.appendChild(imgWrap)
-      question.appendChild(textTitle)
-      question.appendChild(btnsWrap)
-
-      questionWrap.insertAdjacentElement('beforeend', question)
-    }
 
   }
 
 
-  createQuestions();
-
-
-  function toQuestion() {
- 
-    const elem = event.target
-    const num = elem.id.split('_')[1]
-    const previousActiveElem = document.getElementById(activeItemId)
-    previousActiveElem.classList.remove('active')
-
-
-    elem.classList.add('active')
-    activeItemId = elem.id
 
 
 
-    const visibleElem = document.querySelector(`#${visibleQuestionId}`)
-    visibleElem.style.display = 'none'
-    const visibleQuestion = document.getElementById(`question_${num}`)
-    visibleQuestionId = visibleQuestion.id
-    visibleQuestion.style.display = ""
+
+
+
+    // for (let i = 0; i < questionElems.length; i++ ) {
+    //     let question = questionElems[i]
+
+    //   //  let btns = question.querySelectorAll('.game-btn')
+    //   // let rightBtn = btns[0]
+
+    //   let image = question.querySelector('.game-picture')
+    //   image.id = `picture-${i+1}`
+    //   console.log( image )
+
+    //   let imgNum = game.questions[i].imageNum
+    //   let src = `./assets/images/image-data-master/img/${imgNum}.webp`
+    //   image.src = src
+    //   // let rightAnswer = game.questions[i][game.typeGame]
+    //   // rightBtn.textContent = rightAnswer
+    // }
+
+
   }
 
 
-  const sliderItems = document.querySelectorAll('.slider-item')
-  sliderItems.forEach(item => item.addEventListener('click', toQuestion))
-  console.warn ( this )
-
+  setDataOnElems()
 
 }
 

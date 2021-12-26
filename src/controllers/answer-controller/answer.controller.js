@@ -1,4 +1,4 @@
-import { answerView } from "../../views/answer/answer.view"
+import { answerView } from "../../views/answer/answer.view.js"
 
 function answerController() {
   answerView()

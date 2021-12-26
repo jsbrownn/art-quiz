@@ -3,4 +3,4 @@ function scoreView() {
 
 }
 
-export { scoreView};
+export { scoreView} ;

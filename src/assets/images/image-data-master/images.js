@@ -1248,7 +1248,7 @@ const images = [
         imageNum: '207',
     },
     {
-        author: 'Винсент Ван Гог',
+        author: 'Винсент ван Гог',
         name: 'Пшеничное поле с кипарисами',
         year: '1889',
         imageNum: '208',
@@ -1290,7 +1290,7 @@ const images = [
         imageNum: '214',
     },
     {
-        author: 'Винсент Ван Гог',
+        author: 'Винсент ван Гог',
         name: 'Ночное кафе в Арле',
         year: '1888',
         imageNum: '215',

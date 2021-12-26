@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   
@@ -14,7 +13,7 @@ module.exports = {
   },
   module: {
     rules : [
-
+      
       {test: /\.(?:mp3|wav)$/i,
         type: 'asset/resource',
       },

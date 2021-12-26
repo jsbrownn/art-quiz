@@ -1,5 +1,5 @@
-import { scoreController } from "../../controllers/score-controller/score.controller";
-import { Component } from "../component";
+import { scoreController } from "../../controllers/score-controller/score.controller.js";
+import { Component } from "../component.js";
 
 
 const Score = new Component ('score',

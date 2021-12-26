@@ -5,27 +5,41 @@ const Question = new Component('question', `
 
 <div class="questions-block">
 <div class="game-slider">
-  <ul class="game-slider__list">
-    <li class="slider-item" id="slider-item_1">
-      <a class="slider-item__link" href="#question_1" id="slider-item__link-1"></a>
-    </li>
+<ul class="game-slider__list">
+<li class="slider-item" id="slider-item_1">
+  
+</li>
+<li class="slider-item" id="slider-item_2">
 
-  </ul>
+</li>
+<li class="slider-item" id="slider-item_3">
+  
+</li>
+<li class="slider-item" id="slider-item_4">
+  
+</li>
+<li class="slider-item" id="slider-item_5">
+  
+</li>
+<li class="slider-item" id="slider-item_6">
+  
+</li>
+<li class="slider-item" id="slider-item_7">
+  
+</li>
+<li class="slider-item" id="slider-item_8">
+  
+</li>
+<li class="slider-item" id="slider-item_9">
+  
+</li>
+<li class="slider-item" id="slider-item_10">
+  
+</li>
+</ul>
 </div>
 <div class="questions-wrap">
-  <div class="question"  id="question_1" >
-        <h5 class="game-slider__title">Вопрос 1 из 10</h5>
-        <div class="game-picture__wrap">
-          <img src="" class="game-picture" alt="picture">
-        </div>
-        <div class="game-question"></div>
-        <div class="game-answers">
-          <button class="game-btn"></button>
-          <button class="game-btn"></button>
-          <button class="game-btn"></button>
-          <button class="game-btn"></button>
-        </div>
-  </div>
+
 
 </div>
 

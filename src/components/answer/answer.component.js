@@ -1,6 +1,7 @@
-import { Component } from "../component";
+import { answerController } from "../../controllers/answer-controller/answer.controller.js";
+import { Component } from "./../component.js";
 
-const answer =  new Component(
+const Answer =  new Component(
   'answer',
   `<div id="modal" class="modal bounceIn">
   <div class="answer">
@@ -13,4 +14,8 @@ const answer =  new Component(
     <button class="modal-button button">Продолжить</button>
   </div>
 </div>`,
+answerController
 )
+
+
+export { Answer }

@@ -1,6 +1,7 @@
+import { resultController } from "../../controllers/result-controller/result.controller.js";
 import { Component } from "../component";
 
-const result = new Component(
+const Result = new Component(
   'result',
   `<div class="result">
   <div class="result-text">
@@ -12,4 +13,7 @@ const result = new Component(
   <input type="text" name="name" id="result-name" placeholder="Введите имя">
   <button class="button">Coхранить</button>
 </div>`,
-)
+resultController)
+
+
+export { Result }

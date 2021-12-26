@@ -22,13 +22,13 @@ function startPageController() {
     helper.playSound('click') //должно передаватся имя аудиофайла без указания расширения
     if (event.target.closest('li')) {
       const element = document.querySelector('.home-types-list__item--artist');
-      const type = 'artist';
+      const type = 'author';
       changeTypeGame(event, element, type)
     }
 
     if (event.target.closest('li')) {
       const element = document.querySelector('.home-types-list__item--pictures');
-      const type = 'pictures';
+      const type = 'name';
       changeTypeGame(event, element, type)
     }
   }

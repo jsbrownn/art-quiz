@@ -3,6 +3,7 @@ import { Settings } from "../components/settings/settings.component.js";
 import { Categories } from "../components/categories/categories.component.js";
 import { Question } from "../components/questions/questions.component.js";
 import { Score } from "../components/score/score.component.js";
+import { Answer } from "../components/answer/answer.component.js";
 
 
 const router = {
@@ -11,7 +12,8 @@ const router = {
     '/settings': Settings,
     '/categories': Categories,
     '/questions': Question,
-    '/score': Score
+    '/score': Score,
+    '/answer': Answer
   },
 
   onNavigate(pathname) {
