@@ -9,14 +9,11 @@ class Component {
 
   render() {
     console.log('rendered')
-    // let root = document.getElementById('root')
     this.entryElem.style.opacity = '1'
-    
     return this.entryElem.innerHTML = this.markup;
   }
 
   unrender() {
-    // let root = document.getElementById('root')
     this.entryElem.style.opacity = '0';
     return this.entryElem.innerHTML =''
   }

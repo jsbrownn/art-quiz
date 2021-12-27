@@ -1,20 +1,24 @@
 import { answerController } from "../../controllers/answer-controller/answer.controller.js";
 import { Component } from "./../component.js";
 
+
+const elem = document.querySelector('.modal-place')
+
 const Answer =  new Component(
   'answer',
   `<div id="modal" class="modal bounceIn">
   <div class="answer">
     <div class="modal-picture__wrap">
-      <img src="./assets/images/image-data-master/img/10.webp" alt="" class="modal-picture">
+      <img src="" alt="Картина" class="modal-picture">
     </div>
-    <div class="modal-author">Инокентий Smoktunovski</div>
-    <div class="modal-name">Весна в Амстердаме</div>
-    <div class="modal-year">1987</div>
+    <div class="modal-author"></div>
+    <div class="modal-name"></div>
+    <div class="modal-year"></div>
     <button class="modal-button button">Продолжить</button>
   </div>
 </div>`,
-answerController
+answerController,
+elem
 )
 
 

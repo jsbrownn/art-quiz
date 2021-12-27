@@ -2,6 +2,7 @@ import { helper } from "../../helpers/app-helper.js";
 import { questionsView } from "./../../views/questions/question.view.js";
 import { Game } from "../game-contoller/game.controller.js";
 import { router } from "../../router/router.js";
+import { questionHelper } from "../../helpers/queston.helper.js";
 
 function questionsController() {
   console.log('question controlle is ready')
@@ -11,19 +12,7 @@ function questionsController() {
   const questionsBlocks = document.querySelectorAll('.question')
 
 
-  function nextQuestion(questionNum) {
-
-    let num = +questionNum + 1
-
-    if (num >= 10) {
-      let sliderItems = document.querySelectorAll('.slider-item')
-    }
-    const nextItem = document.getElementById(`slider-item_${num}`)
-    setTimeout( ()=>{
-      nextItem.click()
-    },1500)
-    
-  }
+  
 
 
   function saveAnswer(num) {
@@ -41,7 +30,7 @@ function questionsController() {
     const elem = event.target
     const sliderItem = document.getElementById(`slider-item_${questionNum}`)
 
-
+    
     if (game.answers[questionNum - 1] === event.target.textContent) {
       //правильный ответ
 
@@ -49,7 +38,7 @@ function questionsController() {
       elem.classList.add('success')
       helper.playSound('sucess')
       router.onNavigate('/answer')
-      // nextQuestion(questionNum)
+      questionHelper.nextQuestion(+questionNum)
       saveAnswer(questionNum - 1)
     }
 
@@ -59,7 +48,7 @@ function questionsController() {
         sliderItem.classList.add('wrong')
         elem.classList.add('wrong')
         helper.playSound('error')
-        nextQuestion(questionNum)
+        questionHelper.nextQuestion(+questionNum)
       }
 
     }

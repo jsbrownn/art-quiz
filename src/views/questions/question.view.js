@@ -1,12 +1,12 @@
 import { Game } from "../../controllers/game-contoller/game.controller.js";
 import { helper } from "../../helpers/app-helper.js";
-import { questionHelper } from "../../helpers/question.helper.js";
+
 
 
 function questionsView() {
   console.log('questionView is ready')
   let visibleQuestionId = 'question_1'
-  let activeItemId  = 'slider-item_1'
+  let activeItemId = 'slider-item_1'
 
 
 
@@ -56,9 +56,29 @@ function questionsView() {
 
       const question = document.createElement('div')
       question.style.display = 'none'
+
+      // if (!game.questionNowNum) {
+
+      //   if (i === 1) {
+      //     question.style.display = ''
+      //     game.questionNowNum = 1
+      //   }
+      // } else {
+      //   if (i == game.questionNowNum) {
+      //     question.style.display = ""
+      //     const sliderItem = document.querySelector(`#slider-item_${game.questionNowNum}`)
+      //     sliderItem.classList.add('active')
+      //   }
+      // }
+
+
       if (i === 1) {
-        question.style.display = ''
-      }
+            question.style.display = ''
+            game.questionNowNum = 1
+          }
+
+
+
 
       question.id = `question_${i}`
       question.classList.add('question')
@@ -112,6 +132,7 @@ function questionsView() {
       question.appendChild(btnsWrap)
 
       questionWrap.insertAdjacentElement('beforeend', question)
+      
     }
 
   }
@@ -121,9 +142,10 @@ function questionsView() {
 
 
   function toQuestion() {
- 
+
     const elem = event.target
     const num = elem.id.split('_')[1]
+    game.questionNowNum = +num
     const previousActiveElem = document.getElementById(activeItemId)
     previousActiveElem.classList.remove('active')
 
@@ -138,12 +160,12 @@ function questionsView() {
     const visibleQuestion = document.getElementById(`question_${num}`)
     visibleQuestionId = visibleQuestion.id
     visibleQuestion.style.display = ""
+
   }
 
 
   const sliderItems = document.querySelectorAll('.slider-item')
   sliderItems.forEach(item => item.addEventListener('click', toQuestion))
-  console.warn ( this )
 
 
 }
@@ -212,7 +234,7 @@ export { questionsView };
   //   event.preventDefault()
   //   helper.playSound('click')
   //   let hash = event.target.hash
-  //   debugger
+  //
   //     window.location.hash = hash
   // }
 

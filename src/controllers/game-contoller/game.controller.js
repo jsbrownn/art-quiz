@@ -1,5 +1,6 @@
 import { helper } from "../../helpers/app-helper.js"
 import { getData } from "../../models/appModel.js";
+import { router } from "../../router/router.js";
 
 class Game {
   constructor(props) {
@@ -13,8 +14,9 @@ class Game {
       this.timer = false,
       this.timerInterval = undefined,
       this.questions = [],
-      this.answers = []
-      this.answeredQuestion = {}
+      this.answers = [],
+      this.answeredQuestion = {},
+      this.questionNowNum =''
   }
 
   start() {
@@ -30,7 +32,8 @@ class Game {
 
 
   stop() {
-    console.log(this, 'stop')
+    router.onNavigate('/result')
+    
   }
 
 
